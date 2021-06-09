@@ -24,6 +24,7 @@ export const Regular = (): React.ReactNode => (
           <>
             <Item text="Child tab" />
             <Item text="Disabled Child tab" disabled />
+            <Item href="https://www.google.com" text="Link Name" />
           </>
         }
       />
@@ -34,6 +35,7 @@ export const Regular = (): React.ReactNode => (
       <TopSide>
         <Item text="Organizations" />
         <Item text="Company profile" disabled />
+        <Item href="https://www.google.com" text="Link Name" />
       </TopSide>
     </Options>
 

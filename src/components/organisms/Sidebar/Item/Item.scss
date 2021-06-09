@@ -28,7 +28,6 @@
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
-      .ebs-sidebar__text,
       .ebs-icon {
         color: $sidebar-item-hover-color;
       }
@@ -39,7 +38,6 @@
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
-      .ebs-sidebar__text,
       .ebs-icon {
         color: $sidebar-item-hover-color;
       }
@@ -51,7 +49,6 @@
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
-      .ebs-sidebar__text,
       .ebs-icon {
         color: $sidebar-item-hover-color;
       }
@@ -62,7 +59,6 @@
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
-      .ebs-sidebar__text,
       .ebs-icon {
         color: $sidebar-item-hover-color;
       }
@@ -114,15 +110,18 @@
   &__options &__item {
     padding: rem(5px 13.75px 5px 60px);
 
-    &:hover,
-    &.active,
-    &.invert:hover,
-    &.invert.active:hover {
+    &:hover:not(.disabled),
+    &.active:not(.disabled),
+    &.invert:not(.disabled):hover,
+    &.invert.active:not(.disabled):hover {
       background-color: rgba($sidebar-item-hover-background, 0.7);
+      color: $sidebar-item-hover-color;
+    }
 
-      .ebs-sidebar__text {
-        color: $sidebar-item-hover-color;
-      }
+    &.disabled {
+      pointer-events: none;
+      color: $grey-300;
+      background-color: transparent;
     }
   }
 
@@ -130,7 +129,7 @@
     display: none;
   }
 
-  &__options &__item .ebs-sidebar__text {
+  &__options &__item {
     font-size: rem(12px);
     color: $sidebar-item-text-color;
   }

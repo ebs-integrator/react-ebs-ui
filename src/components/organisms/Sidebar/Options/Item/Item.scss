@@ -1,19 +1,19 @@
 .ebs-optionsbar__item {
+  display: block;
   cursor: pointer;
   padding: rem(14px 16px);
   font-size: rem(14px);
   color: $text-color;
   transition: all $transition-time;
 
-  &.disabled,
-  &.disabled:hover {
-    cursor: not-allowed;
-    color: $grey-300;
-    background-color: transparent;
-  }
-
   @include hover-state {
     background-color: $primary-000;
     color: $primary-color;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    color: $grey-300;
+    background-color: transparent;
   }
 }
