@@ -40,7 +40,7 @@
   border-radius: rem($border-radius);
   outline: none;
   font-size: rem(14px);
-  line-height: $line-height-base;
+  line-height: rem($line-height-base);
   padding-right: rem($base-size);
   padding: rem($calendar-padding-y $calendar-padding-x);
   color: $heading-color;
@@ -151,6 +151,10 @@
   }
 }
 
+.react-datepicker__year-select {
+  border: none;
+}
+
 // DatePicker Popper
 .react-datepicker-popper.ebs-datepicker__popper {
   z-index: 999999;
@@ -195,6 +199,10 @@
       width: rem(15px);
       height: rem(15px);
       border: none;
+
+      &-icon::before {
+        display: none;
+      }
     }
 
     &__navigation--previous {

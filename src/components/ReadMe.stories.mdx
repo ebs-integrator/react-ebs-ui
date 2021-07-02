@@ -1,67 +1,105 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { exportStory } from '../libs';
-import logo from '../resources/logo.png';
 
 <Meta title={exportStory('Read Me', 'introduction')} />
 
-<img src={logo} height={50} style={{ float: 'right' }} />
+# EBS Design System
 
-# Get started
+[![NPM version][npm-image]][npm-url]
+[![NPM downloads][download-image]][download-url]
+[![Discussions][discussions-image]][discussions-url]
 
-EBS UI is a reusable component library that helps build UIs faster. The goal is to make building strong UI more simple and productive.
+[![Elements][elements-image]][elements-url]
 
-## Install
+[npm-image]: http://img.shields.io/npm/v/ebs-design.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/ebs-design
+[elements-image]: https://i.ibb.co/gMSWhYM/Elements-1.png
+[elements-url]: https://ebs-integrator.github.io/ebs-design/
+[download-image]: https://img.shields.io/npm/dm/ebs-design.svg?style=flat-square
+[download-url]: https://npmjs.org/package/ebs-design
+[discussions-image]: https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square
+[discussions-url]: https://github.com/ebs-integrator/ebs-design/discussions
 
-EBS UI components are written in React, and its stories are written in [Component Story Format]
+## ⚠️ WARNING
 
-Add EBS UI to your project.
+The UI Kit is UNDER DEVELOPMENT, PLEASE CREATE ISSUES OR PR WITH CHANGES
 
-```bash
-npm install @ebs-integrator/react-ebs-ui
-```
+DON'T USE IT IN PRODUCTION UNTIL AT LEAST RC WILL BE RELEASED
 
-or
+## 🧾 Documentation
 
-```bash
-yarn add @ebs-integrator/react-ebs-u
-```
+For more usage details visit [Storybook](https://ebs-integrator.github.io/ebs-design/)
 
-### **Use**
+## ⭐ Features
 
-Import components you want into your UI
+- Modern design and exceptional user experience.
+- Fully customizable components using variables.
+- Written in TypeScript with predictable static types.
+- High-quality and performant React components.
+- 100% Open Source.
+
+## 📦 Installation
+
+Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install/#debian-stable) or npm to install library.
+
+<img width="415px" src="https://nodei.co/npm/ebs-design.png?downloads=true&downloadRank=true&stars=true" />
+
+#### ⚠️ Peer Dependencies
+Package's name  | Version
+------------- | -------------
+react         | >= 16.8
+react-dom     | >= 16.8
+node-sass     | >=4.0.0 <5.0.0
+
+## 🏗️ Usage guide
 
 ```javascript
-import { Button, Badge, Icon } from '@ebs-integrator/react-ebs-ui';
+import { Button } from 'ebs-design';
 ```
-
-and use them like so
+Import styles scss into a `src/App.(js|tsx)`
+```javascript
+import 'ebs-design/dist/styles/index.scss';
+```
+Or create and import your scss to customize variables
 
 ```javascript
-const Example: React.FC = () => (
-  <>
-    <Button type="primary" size="large">
-      Do something
-    </Button>
-
-    <Badge count={1}>
-      <Icon component={IconSVG} />
-    </Badge>
-  </>
-);
+import './variables.scss';
 ```
 
-[View <Button /\> docs](/?path=/docs/react-ebs-ui-atoms-button--primary)
+```scss
+// Main colors
+$primary-color: #3366ff;
+$success-color: #2ac952;
+$info-color: #3bc0f9;
+$warning-color: #ffd83d;
+$danger-color: #ff3a30;
+$normal-color: #a5a5a5;
 
-### **Run and develop EBS UI locally**
+// Primary colors
+$primary-000: #eef5ff;
+$primary-100: #d6e4ff;
+$primary-200: #adc8ff;
+$primary-300: #85a9ff;
+$primary-400: #6690ff;
+$primary-600: #254eda;
+$primary-700: #1a39b6;
+$primary-800: #102693;
+$primary-900: #0a1a7a;
 
-Clone the [EBS UI GitHub project](https://github.com/ebs-integrator/react-ebs-ui) then start Storybook.
-
-```bash
-  yarn && yarn run storybook
+@import 'ebs-design/dist/styles/index.scss';
 ```
 
-### **Resources**
+## ❤️ Contributing
 
-- [Introducing React EBS UI](https://github.com/ebs-integrator/react-ebs-ui/blob/master/README.md)
-- [GitHub repository](https://github.com/ebs-integrator/react-ebs-ui)
-- [Atomic Design Pattern](https://atomicdesign.bradfrost.com/chapter-2/)
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+## Z-Indexes
+
+1. Mask 990
+2. Select dropdown 999

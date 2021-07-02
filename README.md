@@ -1,31 +1,65 @@
-# React EBS UI
+# EBS Design System
 
-EBS UI is a complete library of styling components. Link to [Storybook](https://ebs-integrator.github.io/react-ebs-ui/)
+[![NPM version][npm-image]][npm-url]
+[![NPM downloads][download-image]][download-url]
+[![Discussions][discussions-image]][discussions-url]
 
-## Installation
+[![Elements][elements-image]][elements-url]
+
+[npm-image]: http://img.shields.io/npm/v/ebs-design.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/ebs-design
+[elements-image]: https://i.ibb.co/gMSWhYM/Elements-1.png
+[elements-url]: https://ebs-integrator.github.io/ebs-design/
+[download-image]: https://img.shields.io/npm/dm/ebs-design.svg?style=flat-square
+[download-url]: https://npmjs.org/package/ebs-design
+[discussions-image]: https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square
+[discussions-url]: https://github.com/ebs-integrator/ebs-design/discussions
+
+## ⚠️ WARNING
+
+The UI Kit is UNDER DEVELOPMENT, PLEASE CREATE ISSUES OR PR WITH CHANGES
+
+DON'T USE IT IN PRODUCTION UNTIL AT LEAST RC WILL BE RELEASED
+
+## 🧾 Documentation
+
+For more usage details visit [Storybook](https://ebs-integrator.github.io/ebs-design/)
+
+## ⭐ Features
+
+- Modern design and exceptional user experience.
+- Fully customizable components using variables.
+- Written in TypeScript with predictable static types.
+- High-quality and performant React components.
+- 100% Open Source.
+
+## 📦 Installation
 
 Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install/#debian-stable) or npm to install library.
 
-```bash
-yarn add react-ebs-ui
-```
+<img width="415px" src="https://nodei.co/npm/ebs-design.png?downloads=true&downloadRank=true&stars=true" />
 
-or
+#### ⚠️ Peer Dependencies
+Package's name  | Version
+------------- | -------------
+react         | >= 16.8
+react-dom     | >= 16.8
+node-sass     | >=4.0.0 <5.0.0
 
-```bash
-npm install react-ebs-ui
-```
-
-## Usage guide
+## 🏗️ Usage guide
 
 ```javascript
-import { Button } from 'react-ebs-ui';
+import { Button } from 'ebs-design';
+```
+Import styles scss into a `src/App.(js|tsx)`
+```javascript
+import 'ebs-design/dist/styles/index.scss';
+```
+Or create and import your scss to customize variables
 
-// Create and import your scss to customize
+```javascript
 import './variables.scss';
 ```
-
-## `variables.scss`
 
 ```scss
 // Main colors
@@ -47,10 +81,10 @@ $primary-700: #1a39b6;
 $primary-800: #102693;
 $primary-900: #0a1a7a;
 
-@import 'react-ebs-ui/dist/styles/index.scss';
+@import 'ebs-design/dist/styles/index.scss';
 ```
 
-## Contributing
+## ❤️ Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

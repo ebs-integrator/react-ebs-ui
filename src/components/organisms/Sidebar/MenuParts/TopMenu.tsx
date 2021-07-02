@@ -4,8 +4,11 @@ import { useLayoutState } from 'components/organisms/Layout/context';
 
 import Item from '../Item';
 
-export const TopMenu: React.FC<{ showToggle?: boolean }> = ({ showToggle = true, children }) => {
-  const { onSetToggled } = useLayoutState();
+export const TopMenu: React.FC<{
+  showToggle?: boolean;
+  toggleText?: string;
+}> = ({ showToggle = true, toggleText = 'Hide titles', children }) => {
+  const { toggled, onSetToggled } = useLayoutState();
 
   return (
     <div className="ebs-sidebar__top">
@@ -13,8 +16,8 @@ export const TopMenu: React.FC<{ showToggle?: boolean }> = ({ showToggle = true,
         <Item
           className="ebs-sidebar__toggler"
           invert
-          prefix={<Icon type="menu-fold" />}
-          text="Hide titles"
+          prefix={<Icon type={`${toggled ? 'open' : 'close'}-sidebar`} />}
+          text={toggleText}
           onClick={onSetToggled}
         />
       )}

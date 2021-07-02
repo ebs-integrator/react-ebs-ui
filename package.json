@@ -1,30 +1,30 @@
 {
-  "name": "@ebs-integrator/react-ebs-ui",
-  "version": "0.0.1-beta.43",
-  "description": "Basic React UI elements.",
-  "author": "EBS Integrator",
+  "name": "ebs-design",
+  "version": "0.0.1-beta.78",
+  "description": "EBS Design System React UI elements.",
+  "author": "EBS Integrator <contact@ebs-integrator.com> (https://ebs-integrator.com/)",
   "maintainers": [
-    {
-      "name": "Vladimir Josan",
-      "email": "iaskivsky@gmail.com"
-    },
     {
       "name": "Marcel Lefter",
       "email": "leftermarcel@gmail.com"
     },
     {
-      "name": "Dima Danu",
-      "email": "dima.danu@gmail.com"
-    },
-    {
       "name": "Nicolae Tataru",
       "email": "devdfan@gmail.com"
+    },
+    {
+      "name": "Vladimir Josan",
+      "email": "iaskivsky@gmail.com"
+    },
+    {
+      "name": "Dima Danu",
+      "email": "dima.danu@gmail.com"
     }
   ],
   "keywords": [
     "react",
     "react-ui",
-    "react-intl",
+    "ebs-design",
     "ebs-ui"
   ],
   "license": "MIT",
@@ -34,6 +34,7 @@
   "jsnext:main": "dist/index.es.js",
   "engines": {
     "node": ">=8",
+    "yarn": ">=1.22.4 <2",
     "npm": ">=5"
   },
   "scripts": {
@@ -53,23 +54,24 @@
     "rc-table": "^7.12.3",
     "rc-upload": "^3.3.4",
     "react-animate-height": "^2.0.23",
-    "react-datepicker": "^3.6.0",
+    "react-datepicker": "^4.1.1",
     "react-phone-input-2": "^2.13.8",
     "react-popper-tooltip": "^4.2.0",
     "react-use": "^17.1.0"
   },
   "peerDependencies": {
     "react": ">= 16.8",
-    "react-dom": ">= 16.8"
+    "react-dom": ">= 16.8",
+    "node-sass": ">=4.0.0 <5.0.0"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.1.21",
-    "@storybook/addon-docs": "^6.1.14",
-    "@storybook/addon-essentials": "^6.1.21",
-    "@storybook/addon-links": "^6.1.21",
-    "@storybook/preset-create-react-app": "^3.1.5",
+    "@storybook/addon-actions": "^6.3.0",
+    "@storybook/addon-docs": "^6.3.0",
+    "@storybook/addon-essentials": "^6.3.0",
+    "@storybook/addon-links": "^6.3.0",
+    "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^6.1.21",
+    "@storybook/react": "^6.3.0",
     "@svgr/rollup": "^2.4.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

@@ -6,7 +6,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: $sidebar-width;
+  width: rem($sidebar-width);
   height: 100vh;
   border-right: $sidebar-border;
   transition: width $transition-time;
@@ -27,17 +27,26 @@
     }
 
     &__mobile--opened {
-      width: $sidebar-width;
+      width: rem($sidebar-width);
       transform: translateX(0);
     }
+  }
+
+  &--toggled &__item.has-options + div {
+    position: absolute;
+    top: 0;
   }
 
   &__top {
     margin-top: rem(5px);
   }
 
+  &__text {
+    @include text-ellipsis;
+  }
+
   &--untoggled &__options {
-    left: $sidebar-width;
+    left: rem($sidebar-width);
   }
 
   &--toggled {
@@ -59,11 +68,10 @@
 
       .ebs-sidebar__text {
         animation: fadeOut 0.1s;
-        white-space: nowrap;
       }
 
       .ebs-sidebar__suffix .ebs-icon {
-        right: $gutter-size / 2;
+        right: rem($gutter-size / 2);
       }
     }
 
@@ -89,20 +97,20 @@
 
   &--toggled &__item.active + .rah-static &__options &__item {
     opacity: 1;
-    left: $layout-top-bar-height - 1;
+    left: rem($layout-top-bar-height - 1);
     transition: all $transition-time;
   }
 
   &--toggled &__options &__item {
     background-color: $sidebar-background;
-    padding: $gutter-size / 3 $gutter-size;
+    padding: rem($gutter-size / 3 $gutter-size);
     z-index: 2;
-    left: -$sidebar-width;
+    left: -#{rem($sidebar-width)};
     opacity: 0;
-    height: $layout-top-bar-height;
-    width: $sidebar-width - 1;
-    border-top: $sidebar-border;
-    border-right: $sidebar-border;
+    height: rem($layout-top-bar-height);
+    width: rem($sidebar-width - 1);
+    border-top: rem($sidebar-border);
+    border-right: rem($sidebar-border);
 
     &.disabled {
       background-color: $border-color;
@@ -115,14 +123,6 @@
     &:nth-last-child(2) {
       border-bottom: $sidebar-border;
     }
-
-    span {
-      @include text-ellipsis;
-    }
-  }
-
-  &--toggled &__options &__item span {
-    @include text-ellipsis;
   }
 
   &__mask {

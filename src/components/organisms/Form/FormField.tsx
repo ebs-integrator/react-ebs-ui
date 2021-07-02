@@ -9,20 +9,23 @@ import { combineProps, checkRequired } from './utils';
 import { FormContext } from './Form';
 import { FieldError } from './FieldError';
 import { FieldExtra } from './FieldExtra';
+import { GenericObject } from 'types';
 
 export interface FormFieldProps extends FieldProps {
-  label?: string;
+  label?: React.ReactNode;
   labelOptions?: LabelOptions;
   controlOptions?: ControlOptions;
   fieldRow?: RowProps; // The layout for field columns
   extra?: React.ReactNode;
   className?: string;
+  hideLabel?: boolean;
   style?: React.CSSProperties;
 }
 
 export const FormField: React.FC<FormFieldProps> = ({
   label,
   labelOptions,
+  hideLabel,
   name,
   extra,
   className,
@@ -42,7 +45,21 @@ export const FormField: React.FC<FormFieldProps> = ({
 
   return (
     <div className={cn(`ebs-form__item ebs-form__field`, className)} style={style}>
-      <Field name={name} {...props}>
+      <Field
+        name={name}
+        {...{
+          ...props,
+          rules: props.rules
+            ? props.rules.map((rule: GenericObject) => {
+                if (formCtx.draft && rule.required) {
+                  rule.required = false;
+                }
+
+                return rule;
+              })
+            : [],
+        }}
+      >
         {(control, meta, form) => {
           if (!children) {
             return null;
@@ -59,7 +76,7 @@ export const FormField: React.FC<FormFieldProps> = ({
           return (
             <>
               <Row className="ebs-form__field__wrapper" {...fieldRowProps}>
-                {label && (
+                {label && !hideLabel && (
                   <Col {...labelProps.col}>
                     <div
                       className={cn('ebs-form__field__label', labelProps.className, {
@@ -81,7 +98,13 @@ export const FormField: React.FC<FormFieldProps> = ({
                 <Col {...labelProps.col} />
                 <Col {...controlProps.col}>
                   {extra && <FieldExtra>{extra}</FieldExtra>}
-                  {meta.errors.length > 0 && <FieldError>{meta.errors}</FieldError>}
+                  {meta.errors.length > 0 && (
+                    <FieldError>
+                      {meta.errors.map((error) =>
+                        label ? error.replace(`'${meta.name.join('.')}'`, label as string) : error,
+                      )}
+                    </FieldError>
+                  )}
                 </Col>
               </Row>
             </>

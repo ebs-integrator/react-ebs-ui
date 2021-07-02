@@ -19,7 +19,7 @@ export const CollapseHeader: React.FC<CollapseHeaderProps> = ({ className, style
     e.stopPropagation();
 
     // Do nothing if header was not directly clicked
-    if (e.target !== e.currentTarget) return;
+    if (e.target !== e.currentTarget && e.target instanceof HTMLButtonElement) return;
 
     toggle();
 
@@ -40,7 +40,7 @@ export const CollapseHeader: React.FC<CollapseHeaderProps> = ({ className, style
     >
       <div className="ebs-collapse__header__title">{children}</div>
       <div className="ebs-collapse__header__toggle" onClick={toggle}>
-        <Icon type={height === 0 ? 'arrow-right' : 'arrow-bottom'} />
+        <Icon type={height === 0 ? 'arrow-top' : 'arrow-bottom'} model="bold" />
       </div>
     </header>
   );

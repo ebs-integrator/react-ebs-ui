@@ -68,13 +68,13 @@
 
   &__content-wrapper {
     position: relative;
+    min-height: calc(100% - #{$layout-top-bar-height});
   }
 
   &__content {
     width: 100%;
     background-color: $layout-content-background;
     height: calc(100vh - #{$layout-top-bar-height * 2});
-    overflow: hidden auto;
     margin: 0 auto;
     padding: rem(15px 25px);
 
@@ -96,6 +96,10 @@
     overflow: hidden auto;
   }
 
+  &__container--has-fixed-footer &__content-wrapper {
+    padding-bottom: rem($layout-footer-height);
+  }
+
   &__container &__content {
     height: 100%;
   }
@@ -109,6 +113,10 @@
 
     &--fixed {
       border-top: $layout-footer-fixed-border;
+      background: $white;
+      position: fixed;
+      bottom: 0;
+      right: 0;
     }
 
     span {
@@ -119,11 +127,11 @@
   }
 
   &__top-bar + .ebs-sidebar {
-    margin-top: $layout-top-bar-height;
+    margin-top: rem($layout-top-bar-height);
   }
 
   .ebs-sidebar {
-    height: calc(100vh - #{$layout-top-bar-height});
+    height: rem(calc(100vh - #{$layout-top-bar-height}));
 
     @include mq($until: small-desktop) {
       margin-top: 0;
@@ -132,7 +140,7 @@
 
     &--toggled .ebs-label {
       @include text-ellipsis;
-      padding: 0 $gutter-size / 3;
+      padding: rem(0 $gutter-size / 3);
     }
   }
 
@@ -152,8 +160,8 @@
         &--toggler {
           cursor: pointer;
           position: relative;
-          height: $layout-top-bar-height;
-          width: $layout-top-bar-height;
+          height: rem($layout-top-bar-height);
+          width: rem($layout-top-bar-height);
           border-right: 1px solid $layout-top-bar-toggler-border-color;
 
           &:hover {
@@ -189,7 +197,7 @@
 }
 
 .ebs-layout__top-bar {
-  height: $layout-top-bar-height;
+  height: rem($layout-top-bar-height);
   display: flex;
   align-items: center;
   transition: width $transition-time;
@@ -205,7 +213,7 @@
     z-index: 3;
 
     + .ebs-sidebar + .ebs-layout__content-wrapper {
-      padding-top: $layout-top-bar-height;
+      padding-top: rem($layout-top-bar-height);
     }
   }
 
@@ -213,30 +221,30 @@
     cursor: pointer;
     font-size: rem(14px);
     @include fontBold;
-    min-width: $sidebar-width - $gutter-size;
+    min-width: rem($sidebar-width - $gutter-size);
 
     img {
-      max-width: $sidebar-logo-width;
+      max-width: rem($sidebar-logo-width);
     }
 
     svg:first-child {
-      font-size: $sidebar-logo-width;
+      font-size: rem($sidebar-logo-width);
     }
 
     &::after {
       content: '';
       width: 1px;
-      height: $layout-top-bar-height;
+      height: rem($layout-top-bar-height);
       border-right: 1px solid $layout-top-bar-toggler-border-color;
       position: absolute;
       top: 0;
-      left: $sidebar-width - 2px;
+      left: rem($sidebar-width - 2px);
     }
   }
 
   &-left {
     width: 100%;
-    margin-left: $layout-top-bar-side-left-magin-left;
+    margin-left: rem($layout-top-bar-side-left-margin-left);
   }
 
   &-left ~ &-title {
@@ -251,21 +259,21 @@
   }
 
   &-right {
-    margin-left: $layout-top-bar-side-right-magin-left;
+    margin-left: rem($layout-top-bar-side-right-margin-left);
     width: 100%;
     justify-content: flex-end;
 
     > *:not(:first-child) {
-      margin-left: $base-size;
+      margin-left: rem($base-size);
     }
 
     &-item {
       display: flex;
       align-items: center;
-      margin-left: $gutter-size;
+      margin-left: rem($gutter-size);
 
       > *:not(:first-child) {
-        margin-left: $gutter-size;
+        margin-left: rem($gutter-size);
       }
     }
   }

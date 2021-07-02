@@ -1,7 +1,8 @@
 .ebs-avatar {
+  @include elevation-1;
   @include flex-center;
   position: relative;
-  border-radius: $border-radius;
+  border-radius: rem($border-radius);
 
   &--circle,
   &--circle &__img {
@@ -35,33 +36,42 @@
     }
   }
 
+  &--dynamic {
+    color: $white;
+
+    .ebs-icon {
+      color: $white;
+    }
+  }
+
   &--small {
-    min-width: $avatar-size-small;
-    width: $avatar-size-small;
-    height: $avatar-size-small;
+    min-width: rem($avatar-size-small);
+    width: rem($avatar-size-small);
+    height: rem($avatar-size-small);
   }
 
   &--small &-short-alt {
-    font-size: $avatar-font-small;
+    font-size: rem($avatar-font-small);
   }
 
   &--big {
-    min-width: $avatar-size-big;
-    width: $avatar-size-big;
-    height: $avatar-size-big;
+    min-width: rem($avatar-size-big);
+    width: rem($avatar-size-big);
+    height: rem($avatar-size-big);
   }
 
   &--big &-short-alt {
-    font-size: $avatar-font-big;
+    font-size: rem($avatar-font-big);
   }
 
   &__short-alt {
+    @include flex-center;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    @include fontBold;
     white-space: nowrap;
+    font-weight: $avatar-short-alt-font-weight;
   }
 
   &__img {
@@ -101,15 +111,15 @@
     align-items: center;
     background-color: #f9f9f9;
     border: 1px solid #dfddd6;
-    border-radius: $border-radius;
+    border-radius: rem($border-radius);
 
     &-alt {
       color: #333;
       padding: rem(0 $gutter-size / 2);
-      border-top-right-radius: $border-radius;
-      border-bottom-right-radius: $border-radius;
-      @include fontMedium;
+      border-top-right-radius: rem($border-radius);
+      border-bottom-right-radius: rem($border-radius);
       font-size: rem(9px);
+      font-weight: $avatar-card-alt-font-weight;
     }
 
     img {
@@ -132,14 +142,15 @@
 
     &--reversed &-alt {
       margin-left: 0;
-      margin-right: $gutter-size;
+      margin-right: rem($gutter-size);
     }
 
     &-alt {
-      margin-left: $gutter-size;
-      @include fontSemiBold;
+      margin-left: rem($gutter-size);
       font-size: rem(12px);
       color: $black;
+      overflow: hidden;
+      font-weight: $avatar-inline-alt-font-weight;
     }
 
     &--light &-alt {
@@ -147,6 +158,7 @@
     }
 
     &-description {
+      @include text-ellipsis;
       font-size: rem(10px);
       color: $avatar-description-color;
     }

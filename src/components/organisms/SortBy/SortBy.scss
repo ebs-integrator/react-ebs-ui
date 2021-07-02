@@ -1,7 +1,7 @@
 .ebs-sort-by__tooltip {
   padding: 0;
   border: 1px solid $border-color;
-  border-radius: $border-radius;
+  border-radius: rem($border-radius);
   width: rem(162.5px);
   max-height: rem($sort-by-tooltip-height);
   overflow: hidden auto;
@@ -15,13 +15,11 @@
   }
 
   &-items &-item {
+    @include fontMedium;
+    @include text-ellipsis;
     position: relative;
     padding: rem(12.5px);
     font-size: rem(12px);
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    @include fontMedium;
     cursor: pointer;
     transition: 0.2s;
 

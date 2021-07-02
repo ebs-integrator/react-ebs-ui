@@ -28,7 +28,7 @@ export const NotifyItem: React.FC<NotifyItemProps> = ({
   if (!icon) {
     switch (type) {
       case 'success':
-        icon = 'check-2';
+        icon = 'check';
         break;
       case 'danger':
         icon = 'alert';
@@ -55,7 +55,7 @@ export const NotifyItem: React.FC<NotifyItemProps> = ({
         {description && <p className="ebs-notify__item-message">{description}</p>}
       </Space>
       <Button type="text" className="ebs-notify__item-close" onClick={onClose}>
-        <Icon type="close" />
+        <Icon type="close" model="bold" />
       </Button>
     </Space>
   );

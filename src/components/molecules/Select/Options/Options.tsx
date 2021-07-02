@@ -1,6 +1,7 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { useEventListener } from 'hooks';
-import { Animated, Space } from 'components/atoms';
+import { Animated, Space, Label } from 'components/atoms';
 import { Item, ItemProps } from './Item';
 
 import { SelectMode, OptionValue, Option } from '../Select';
@@ -18,10 +19,13 @@ export interface OptionsProps {
   loading?: boolean;
   value?: OptionValue | OptionValue[];
   emptyLabel?: string;
+  maxHeight?: number;
+  newOption?: string;
   onPrev?: () => void;
   onNext?: () => void;
   onClose?: () => void;
   onChange?: (value: OptionValue | OptionValue[]) => void;
+  onClickAddNew?: (value: string) => void;
 }
 
 const Options: React.FC<OptionsProps> & OptionsComposition = ({
@@ -31,9 +35,12 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   options = [],
   value,
   emptyLabel = 'No found',
+  maxHeight,
+  newOption,
   onNext,
   onClose,
   onChange,
+  onClickAddNew,
 }) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
   const [activeItem, setActiveItem] = React.useState(0);
@@ -47,18 +54,18 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   };
 
   React.useEffect(() => {
-    if (ref.current && !scrollMode && options?.length) {
+    if (ref?.current && !scrollMode && options?.length) {
       ref.current.scrollTop = 0;
     }
   }, [ref, options, scrollMode]);
 
   React.useEffect(() => {
-    if (ref.current && scrollMode) {
+    if (ref?.current && scrollMode) {
       ref.current.addEventListener('scroll', onScroll);
     }
 
     return () => {
-      if (ref.current && scrollMode) {
+      if (ref?.current && scrollMode) {
         ref.current.removeEventListener('scroll', onScroll);
       }
     };
@@ -106,7 +113,22 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   };
 
   return (
-    <div ref={ref} className="ebs-select__options-items">
+    <div
+      ref={ref}
+      className={cn('ebs-select__options-items', {
+        'ebs-select__options--multiple': ['multiple', 'tags'].includes(mode),
+      })}
+      style={maxHeight ? { maxHeight } : undefined}
+    >
+      {newOption && onClickAddNew && (
+        <Item
+          value={newOption}
+          text={newOption}
+          selected
+          onClick={() => onClickAddNew(newOption)}
+          suffix={<Label type="ghost" text="CTRL+Enter" />}
+        />
+      )}
       <Animated loading={loading} duration={100}>
         {options.length ? (
           options.map((option, key) => (
@@ -114,7 +136,9 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
               key={key}
               mode={mode}
               active={
-                mode === 'multiple' && Array.isArray(value) ? value.includes(option.value) : value === option.value
+                ['multiple', 'tags'].includes(mode) && Array.isArray(value)
+                  ? value.includes(option.value)
+                  : value === option.value
               }
               selected={activeItem === key + 1}
               text={option.text}
