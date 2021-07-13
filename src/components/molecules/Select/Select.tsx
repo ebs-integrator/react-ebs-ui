@@ -17,6 +17,7 @@ import { Options, OptionsProps, OptionsComposition } from './Options';
 import { isEqual } from './utils';
 
 import { InputSearchProps } from '../InputSearch/InputSearch';
+import { IconType } from 'components/atoms/Icon/Icon';
 
 export interface SelectComposition {
   Options: React.FC<OptionsProps> & OptionsComposition;
@@ -461,7 +462,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
             {!isBox && (
               <div className="ebs-select__suffix">
-                <Icon type={`arrow-${!disabled && openDropdown ? 'top' : 'bottom'}`} model="bold" />
+                <Icon type={`arrow-${!disabled && openDropdown ? 'top' : 'bottom'}` as IconType} model="bold" />
               </div>
             )}
 
